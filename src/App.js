@@ -54,7 +54,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header" style={{ display: 'flex', height: '70px', background: '#ccc', position: 'fixed', top: '0', zIndex: '2' }}>
+      <header className="App-header" style={{ display: 'flex', width: '100%', height: '70px', background: '#ccc', position: 'fixed', top: '0', zIndex: '2' }}>
         <ul style={{
           display: 'flex',
           listStyleType: 'none'
