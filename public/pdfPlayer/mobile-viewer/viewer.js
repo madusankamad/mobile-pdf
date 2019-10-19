@@ -392,7 +392,7 @@ function enablePinchZoom() {
   const reset = () => { startX = startY = initialPinchDistance = 0; pinchScale = 1; };
   // Prevent native iOS page zoom
   //document.addEventListener("touchmove", (e) => { if (e.scale !== 1) { e.preventDefault(); } }, { passive: false });
-  viewer.addEventListener("touchstart", (e) => {
+  document.addEventListener("touchstart", (e) => {
     if (e.touches.length > 1) {
       startX = (e.touches[0].pageX + e.touches[1].pageX) / 2;
       startY = (e.touches[0].pageY + e.touches[1].pageY) / 2;
@@ -401,7 +401,7 @@ function enablePinchZoom() {
       initialPinchDistance = 0;
     }
   });
-  viewer.addEventListener("touchmove", (e) => {
+  document.addEventListener("touchmove", (e) => {
 
     if (e.touches.length >= 2) {
       console.log('touchmove', e.touches.length);
@@ -416,19 +416,21 @@ function enablePinchZoom() {
     }
     console.log('viewer.addEventListener touchmove Default', e.touches.length);
   });
-  viewer.addEventListener("touchend", (e) => {
+  document.addEventListener("touchend", (e) => {
 
-    if (initialPinchDistance <= 0) { return; }
-    viewer.style.transform = `none`;
-    viewer.style.transformOrigin = `unset`;
-    PDFViewerApplication.pdfViewer.currentScale *= pinchScale;
-    const rect = container.getBoundingClientRect();
-    const dx = startX - rect.left;
-    const dy = startY - rect.top;
-    container.scrollLeft += dx * (pinchScale - 1);
-    container.scrollTop += dy * (pinchScale - 1);
-    reset();
-    console.log('touchend', PDFViewerApplication.pdfViewer.currentScale);
+    if (!initialPinchDistance <= 0) {
+      viewer.style.transform = `none`;
+      viewer.style.transformOrigin = `unset`;
+      PDFViewerApplication.pdfViewer.currentScale *= pinchScale;
+      const rect = container.getBoundingClientRect();
+      const dx = startX - rect.left;
+      const dy = startY - rect.top;
+      container.scrollLeft += dx * (pinchScale - 1);
+      container.scrollTop += dy * (pinchScale - 1);
+      reset();
+      console.log('touchend', PDFViewerApplication.pdfViewer.currentScale);
+    }
+    console.log('Default touchend initialPinchDistance', initialPinchDistance);
   });
 }
 
