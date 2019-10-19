@@ -2,7 +2,7 @@ import React from 'react';
 
 const PdfPage = () => {
     return (<div style={{ width: '100vw', height: 'calc(100vh - 70px)', position: 'relative', marginTop: '70px' }}>
-        PDF Page
+        Madz ----- PDF Page
         {<iframe
             style={{ width: '100%', height: '100%' }}
             title="PDF View"
