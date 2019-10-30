@@ -6,9 +6,11 @@
     "axios": "^0.19.0",
     "pdfjs-dist": "^2.1.266",
     "react": "^16.9.0",
+    "react-device-detect": "^1.9.10",
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.1.1"
+    "react-scripts": "3.1.1",
+    "styled-components": "^4.4.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -17,9 +19,6 @@
     "eject": "react-scripts eject",
     "postinstall:p": "npm run build",
     "start:node": "node server"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [
@@ -32,5 +31,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-react": "^7.16.0"
   }
 }
