@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {
-  isSafari,
+    isSafari,
 } from 'react-device-detect';
 
 
@@ -17,14 +17,13 @@ const TextTrim = styled.div`
     display: inline-block;
        line-height: 20px;
         width: 90%;
-        max-height: 44px;
+        max-height: 42px;
         margin: 20px  0 0 0;
       
         a{
             
             line-height: 20px;
-            font-size: 12px;
-            
+            font-size: 16px;
             word-wrap: break-word;
             word-break: break-word;
            
@@ -38,6 +37,9 @@ const TextTrim = styled.div`
             color: green;
             text-decoration: underline;
             text-decoration-style: dotted;
+            text-decoration-skip-ink: none;
+            text-underline-position: under;
+            border: none;
             }
             
         }
@@ -56,16 +58,16 @@ const TextTrim = styled.div`
 const ClampText = ({ children }) => (<TextTrim className={isSafari ? 'clampTxt' : 'borderTxt'}>{children}</TextTrim>);
 
 const TextWrap = () => (
-  <>
-      <h1>Text Wrapping </h1>
-      <h2>T Samples Goes Here</h2>
-      <TextContainer>
-          <p>Some elypsic text</p>
-          <ClampText>
-              <a href="#">o far, you should have a working JavaScript with Webpack application. In this tutorial, we will take this one step further by introducing ESLint for an enforced unified code style without code smells. Code style becomes an important topic for developers. If you just code for yourself, it might be alright to violate best practices. However, in a team of developers you have to have a common code style as foundation. You should follow the same rules to make your code look alike. It helps others developers to read your code, but also to avoid code smells.</a>
+    <>
+        <h1>Text Wrapping </h1>
+        <h2>T Samples Goes Here</h2>
+        <TextContainer>
+            <p>Some elypsic text</p>
+            <ClampText>
+                <a href="#">o far, you should have a working JavaScript with Webpack application. In this tutorial, we will take this one step further by introducing ESLint for an enforced unified code style without code smells. Code style becomes an important topic for developers. If you just code for yourself, it might be alright to violate best practices. However, in a team of developers you have to have a common code style as foundation. You should follow the same rules to make your code look alike. It helps others developers to read your code, but also to avoid code smells.</a>
             </ClampText>
-          <ClampText>
-              <a href="#">
+            <ClampText>
+                <a href="#">
                     oAAAAA far, you should have a working JavaScript with Webpack application.
                                       In this tutorial, we will take this one step further by introducing ESLint for an enforced unified code style wit
                                       hout code smells. Code style becomes an important topic for developers. If you just code for yourself, it might be alright to viol
@@ -74,7 +76,7 @@ const TextWrap = () => (
                 </a>
             </ClampText>
         </TextContainer>
-  </>
+    </>
 );
 
 

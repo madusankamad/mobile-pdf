@@ -5,12 +5,36 @@ import styled from 'styled-components';
 import PdfPage from './pages/pdfPage';
 import HomePage from './pages/homePage';
 import TextWrap from './pages/textWrap';
+import ScrollToPage from './pages/scrollToPage';
 import { getBlobData } from './utils';
 
 
 const PageContainer = styled.div`
         position: relative;
         top: 50px;
+`;
+
+const StyledMenu = styled.ul`
+      display: flex;
+      list-style-type: none;
+      li{
+        margin: auto 5px;
+        background: yellow;
+        height: 100%;
+        padding: 0;
+        a, button{
+          height: 100%;
+          align-items: center;
+          margin: auto;
+          display: flex;
+          padding: 0 15px;
+          text-decoration: none;
+          &:hover{
+            cursor: pointer;
+            font-weight: bold;
+          }
+        }
+      }
 `;
 
 const instance = axios.create({
@@ -64,15 +88,8 @@ function App() {
           display: 'flex', width: '100%', height: '70px', background: '#ccc', position: 'fixed', top: '0', zIndex: '2',
         }}
       >
-        <ul style={{
-          display: 'flex',
-          listStyleType: 'none',
-        }}
-        >
-          <li style={{
-            margin: 'auto 20px',
-          }}
-          >
+        <StyledMenu>
+          <li>
             <Link
               to={{
                 pathname: '/home',
@@ -83,10 +100,7 @@ function App() {
 
             </Link>
           </li>
-          <li style={{
-            margin: 'auto 20px',
-          }}
-          >
+          <li>
             <Link
               to={{
                 pathname: '/pdf',
@@ -97,16 +111,10 @@ function App() {
 
             </Link>
           </li>
-          <li style={{
-            margin: 'auto 20px',
-          }}
-          >
+          <li>
             <button onClick={downloadZip}>Download Zip</button>
           </li>
-          <li style={{
-            margin: 'auto 20px',
-          }}
-          >
+          <li>
             <Link
               to={{
                 pathname: '/textWrap',
@@ -117,7 +125,18 @@ function App() {
 
             </Link>
           </li>
-        </ul>
+          <li>
+            <Link
+              to={{
+                pathname: '/scrollPage',
+                state: { pageName: 'scrollPage' },
+              }}
+            >
+              scrollPage
+
+            </Link>
+          </li>
+        </StyledMenu>
 
       </header>
       <PageContainer>
@@ -125,6 +144,7 @@ function App() {
           <Route path="/home" component={HomePage} />
           <Route path="/pdf" component={PdfPage} />
           <Route path="/textWrap" component={TextWrap} />
+          <Route path="/scrollPage" component={ScrollToPage} />
         </Switch>
       </PageContainer>
 
